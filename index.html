@@ -13,52 +13,106 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-ornament top"></div>
+    <img class="hero-bg-img" src="/images/background/2.jpeg" alt="" aria-hidden="true" />
+    <div id="heroPetals"></div>
     <p class="hero-label">We're getting married</p>
-    <h1 class="hero-names">
-      <span class="name-ko">김원왕</span>
-      <span class="ampersand">&amp;</span>
-      <span class="name-ko">이지은</span>
-    </h1>
-    <p class="hero-date">2026. 10. 24</p>
-    <div class="hero-ornament bottom"></div>
-    <div class="scroll-hint">
-      <span></span>
-    </div>
   </section>
 
   <!-- Greeting -->
   <section class="section greeting">
     <div class="section-inner">
-      <div class="divider"><span>✦</span></div>
       <p class="greeting-text">
-        두 사람이 서로를 선택하고<br />
-        함께 새로운 이야기를 시작하려 합니다.<br /><br />
-        소중한 분들을 모시고<br />
-        행복한 시간을 나누고 싶습니다.<br /><br />
-        부디 오셔서 저희의 시작을<br />
-        축복해 주시면 감사하겠습니다.
+        우리가 서로 사랑하면 하나님이 우리 안에 거하시고<br />
+        그의 사랑이 우리 안에 온전히 이루어지느니라<br />
+        요한일서 4:12<br />
       </p>
       <div class="divider"><span>✦</span></div>
-      <div class="parents">
+      <p class="greeting-text">
+        하나님의 때에 서로 만난 두 사람이<br />
+        은혜로 결실을 맺게 되었습니다.<br /><br />
+        늘 서로 존중하며 주위에<br />
+        사랑을 나누는 가정 이루도록<br /><br />
+        기도와 축복으로 함께 해주신다면<br />
+        더 없는 감사와 기쁨으로 간직하겠습니다.<br /><br />
+      </p>
+      <div class="divider"><span>신랑 <strong>김원왕</strong> ♥ 신부 <strong>이지은</strong></span></div>
+      <!-- <div class="parents">
         <div class="parents-row">
           <span>아버지 · 어머니</span>
-          <span class="parents-label">의 아들</span>
+          <span class="parents-label">신랑</span>
           <strong>김원왕</strong>
         </div>
         <div class="parents-row">
           <span>아버지 · 어머니</span>
-          <span class="parents-label">의 딸</span>
+          <span class="parents-label">신부</span>
           <strong>지은</strong>
+        </div>
+      </div> -->
+
+    </div>
+  </section>
+
+  <!-- Parents Contact -->
+  <section class="section parents-contact-section">
+    <div class="section-inner">
+      <h2 class="section-title">혼주 연락처</h2>
+      <div class="parents-contact-grid">
+
+        <div class="parents-contact-side">
+          <p class="contact-side-label"><strong>신랑측</strong></p>
+          <div class="contact-person-row">
+            <span class="contact-person-name"><span class="contact-relation">아버지</span> 김두석</span>
+            <a href="tel:010-3799-9204" class="contact-phone-btn" aria-label="전화하기"></a>
+          </div>
+          <div class="contact-person-row">
+            <span class="contact-person-name"><span class="contact-relation">어머니</span> 박영순</span>
+            <a href="tel:010-4242-9204" class="contact-phone-btn" aria-label="전화하기"></a>
+          </div>
+        </div>
+
+        <div class="parents-contact-divider"></div>
+
+        <div class="parents-contact-side">
+          <p class="contact-side-label"><strong>신부측</strong></p>
+          <div class="contact-person-row">
+            <span class="contact-person-name"><span class="contact-relation">아버지</span> 이동신</span>
+            <a href="tel:010-8550-3797" class="contact-phone-btn" aria-label="전화하기"></a>
+          </div>
+          <div class="contact-person-row">
+            <span class="contact-person-name"><span class="contact-relation">어머니</span> 고민정</span>
+            <a href="tel:010-7649-1130" class="contact-phone-btn" aria-label="전화하기"></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Photo Gallery -->
+  <section class="section gallery-section">
+    <div class="section-inner">
+      <h2 class="section-title">우리의 이야기</h2>
+      <div class="gallery-carousel" id="galleryCarousel">
+        <div class="gallery-track" id="galleryTrack"></div>
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Modal -->
+  <div class="modal-overlay" id="photoModal" onclick="closePhotoModal()">
+    <button class="modal-close" onclick="closePhotoModal()">✕</button>
+    <div class="modal-counter" id="modalCounter">1 / 6</div>
+    <button class="modal-nav prev" onclick="event.stopPropagation(); changePhoto(-1)">‹</button>
+    <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+      <img id="modalImg" src="" alt="웨딩 사진" />
+    </div>
+    <button class="modal-nav next" onclick="event.stopPropagation(); changePhoto(1)">›</button>
+  </div>
+
   <!-- Calendar -->
   <section class="section calendar-section">
     <div class="section-inner">
-      <h2 class="section-title">예식 일정</h2>
+      <h2 class="section-title">Wedding Day</h2>
       <div class="calendar">
         <div class="calendar-header">
           <span>2026년 10월</span>
@@ -69,82 +123,45 @@
         <div class="calendar-days" id="calendarDays"></div>
       </div>
       <div class="event-info">
-        <div class="event-info-row">
-          <span class="event-icon">🕐</span>
-          <span>2026년 10월 24일 토요일 오후 2시</span>
+        <p class="event-date-main">2026년 10월 24일 토요일 | 오후 12시</p>
+        <p class="event-date-main">Sunday, October 24, 2026 | 12pm</p>
+      </div>
+
+      <div class="countdown-wrap">
+        <div class="countdown-blocks">
+          <div class="countdown-block">
+            <span class="countdown-num" id="cdDays">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <span class="countdown-sep">|</span>
+          <div class="countdown-block">
+            <span class="countdown-num" id="cdHours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <span class="countdown-sep">|</span>
+          <div class="countdown-block">
+            <span class="countdown-num" id="cdMinutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <span class="countdown-sep">|</span>
+          <div class="countdown-block">
+            <span class="countdown-num" id="cdSeconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
         </div>
-        <div class="event-info-row">
-          <span class="event-icon">📍</span>
-          <span>퀸즈한인교회</span>
-        </div>
+        <p class="countdown-text">원왕 ❤︎ 지은 결혼식이 <span id="cdDaysText">00</span>일 남았습니다</p>
       </div>
     </div>
   </section>
-
-  <!-- Photo Gallery -->
-  <section class="section gallery-section">
-    <div class="section-inner">
-      <h2 class="section-title">우리의 이야기</h2>
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-placeholder" onclick="openPhotoModal(0)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 1</span>
-          </div>
-        </div>
-        <div class="gallery-placeholder" onclick="openPhotoModal(1)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 2</span>
-          </div>
-        </div>
-        <div class="gallery-placeholder" onclick="openPhotoModal(2)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 3</span>
-          </div>
-        </div>
-        <div class="gallery-placeholder" onclick="openPhotoModal(3)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 4</span>
-          </div>
-        </div>
-        <div class="gallery-placeholder" onclick="openPhotoModal(4)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 5</span>
-          </div>
-        </div>
-        <div class="gallery-placeholder" onclick="openPhotoModal(5)">
-          <div class="placeholder-inner">
-            <span class="placeholder-icon">📷</span>
-            <span class="placeholder-text">사진 6</span>
-          </div>
-        </div>
-      </div>
-      <p class="gallery-note">※ 실제 사진은 <code>images/</code> 폴더에 photo1.jpg ~ photo6.jpg 파일을 넣어주세요</p>
-    </div>
-  </section>
-
-  <!-- Photo Modal -->
-  <div class="modal-overlay" id="photoModal" onclick="closePhotoModal()">
-    <button class="modal-close" onclick="closePhotoModal()">✕</button>
-    <button class="modal-nav prev" onclick="event.stopPropagation(); changePhoto(-1)">‹</button>
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <img id="modalImg" src="" alt="웨딩 사진" />
-    </div>
-    <button class="modal-nav next" onclick="event.stopPropagation(); changePhoto(1)">›</button>
-  </div>
 
   <!-- Map -->
   <section class="section map-section">
     <div class="section-inner">
-      <h2 class="section-title">오시는 길</h2>
+      <h2 class="section-title">Location</h2>
       <div class="venue-name">퀸즈한인교회</div>
       <div class="map-container">
         <iframe
-          src="https://maps.google.com/maps?q=Queens+Korean+Church+NY&output=embed&hl=ko&z=15"
+          src="https://maps.google.com/maps?q=8900+23rd+Ave,+East+Elmhurst,+NY+11369&output=embed&hl=ko&z=14"
           width="100%"
           height="300"
           style="border:0;"
@@ -155,13 +172,14 @@
         </iframe>
       </div>
       <a
-        href="https://maps.google.com/maps?q=Queens+Korean+Church+NY"
+        href="https://www.google.com/maps/search/?api=1&query=The+Korean+Church+of+Queens,+8900+23rd+Ave,+East+Elmhurst,+NY+11369"
         target="_blank"
         rel="noopener noreferrer"
         class="map-link-btn"
       >
         구글 지도에서 보기 →
       </a>
+      <p class="parking-info">🅿 예식 당일 교회 내 주차장을 이용할 수 있습니다.</p>
     </div>
   </section>
 
@@ -171,6 +189,13 @@
       <h2 class="section-title">참석 여부 알려주세요</h2>
       <p class="rsvp-desc">소중한 자리에 함께해 주실지 알려주세요.<br />참석 확인은 10월 10일까지 부탁드립니다.</p>
 
+      <button class="rsvp-toggle-btn" id="rsvpToggleBtn" onclick="toggleRSVP()">
+        <span id="rsvpToggleText">참석 의사 전달하기</span>
+        <span class="rsvp-toggle-sub">RSVP</span>
+        <span class="rsvp-toggle-arrow" id="rsvpToggleArrow">▾</span>
+      </button>
+
+      <div class="rsvp-body hidden" id="rsvpBody">
       <form class="rsvp-form" id="rsvpForm" onsubmit="submitRSVP(event)">
         <div class="form-group">
           <label for="name">이름 <span class="required">*</span></label>
@@ -189,11 +214,6 @@
               <input type="radio" name="attendance" value="불참" />
               <span class="radio-custom"></span>
               불참합니다
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="attendance" value="미정" />
-              <span class="radio-custom"></span>
-              미정입니다
             </label>
           </div>
         </div>
@@ -215,8 +235,8 @@
         </div>
 
         <div class="form-group">
-          <label for="message">축하 메시지</label>
-          <textarea id="message" name="message" rows="4" placeholder="두 사람에게 따뜻한 한 마디 남겨주세요 ☺"></textarea>
+          <label for="phone4">휴대폰 뒷자리 4자리 (동명이인 확인용)<span class="required">*</span></label>
+          <input type="text" id="phone4" name="phone4" placeholder="0000" maxlength="4" inputmode="numeric" pattern="[0-9]{4}" required />
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">
@@ -229,27 +249,191 @@
         <div class="success-icon">✓</div>
         <p>소중한 마음 잘 전달되었습니다.<br />함께해 주셔서 감사합니다 💕</p>
       </div>
+      </div><!-- /rsvp-body -->
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="section contact-section">
+  <!-- Guestbook -->
+  <section class="section guestbook-section">
     <div class="section-inner">
-      <h2 class="section-title">연락처</h2>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <p class="contact-role">신랑</p>
-          <p class="contact-name">김원왕</p>
-          <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-role">신부</p>
-          <p class="contact-name">이지은</p>
-          <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
-        </div>
+      <h2 class="section-title">방명록</h2>
+
+      <div class="guestbook-preview" id="guestbookPreview">
+        <p class="guestbook-loading">불러오는 중...</p>
+      </div>
+
+      <button class="guestbook-view-all-btn" onclick="openGuestbookPopup()">전체보기</button>
+
+      <button class="rsvp-toggle-btn guestbook-write-btn" id="guestbookWriteBtn" onclick="toggleGuestbookForm()">
+        <span>메시지 남기기</span>
+        <span class="rsvp-toggle-sub">Guestbook</span>
+        <span class="rsvp-toggle-arrow" id="guestbookWriteArrow">▾</span>
+      </button>
+
+      <div class="rsvp-body hidden" id="guestbookWriteBody">
+        <form class="rsvp-form" id="guestbookForm" onsubmit="submitGuestbook(event)">
+          <div class="form-group">
+            <label for="gbName">이름 <span class="required">*</span></label>
+            <input type="text" id="gbName" name="gbName" placeholder="성함을 입력해주세요" required />
+          </div>
+          <div class="form-group">
+            <label for="gbPassword">비밀번호 <span class="required">*</span></label>
+            <input type="password" id="gbPassword" name="gbPassword" placeholder="나중에 삭제 시 필요합니다" required />
+          </div>
+          <div class="form-group">
+            <label for="gbMessage">메시지 <span class="required">*</span> <span class="gb-char-count"><span id="gbCharCount">0</span>/200</span></label>
+            <textarea id="gbMessage" name="gbMessage" rows="4" placeholder="두 사람에게 따뜻한 한 마디 남겨주세요 ☺" maxlength="200" oninput="updateGbCount()" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="gbSubmitBtn">
+            <span id="gbSubmitText">메시지 전달하기</span>
+            <span id="gbSubmitSpinner" class="spinner hidden"></span>
+          </button>
+        </form>
       </div>
     </div>
   </section>
+
+  <!-- Guestbook Popup -->
+  <div class="gb-popup-overlay hidden" id="gbPopup" onclick="closeGuestbookPopup()">
+    <div class="gb-popup" onclick="event.stopPropagation()">
+      <div class="gb-popup-header">
+        <span>방명록</span>
+        <button class="gb-popup-close" onclick="closeGuestbookPopup()">✕</button>
+      </div>
+      <div class="gb-popup-list" id="gbPopupList">
+        <p class="guestbook-loading">불러오는 중...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account -->
+  <section class="section account-section">
+    <div class="section-inner">
+      <h2 class="section-title">마음 전하실 곳</h2>
+      <p class="account-desc">축복의 의미로 축의금을 전달해보세요.</p>
+      <div class="account-btn-wrap">
+        <button class="account-btn" onclick="openAccountPopup('groom')">신랑측</button>
+        <button class="account-btn" onclick="openAccountPopup('bride')">신부측</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden account data -->
+  <div id="acctSrcGroom" style="display:none">
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신랑</span>
+        <span class="account-name">김원왕</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">Zelle</span>
+          <span class="account-num">917-745-6778</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('917-745-6778', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">Venmo</span>
+          <span class="account-num">@Wonwang-Kim</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('@Wonwang-Kim', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신랑 아버지</span>
+        <span class="account-name">김두석</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">신한은행</span>
+          <span class="account-num">110-021-152252</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('110-021-152252', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신랑 어머니</span>
+        <span class="account-name">박영순</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">KEB하나은행</span>
+          <span class="account-num">484-810061-19107</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('484-810061-19107', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="acctSrcBride" style="display:none">
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신부</span>
+        <span class="account-name">이지은</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">기업은행</span>
+          <span class="account-num">533-040115-01-016</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('533-040115-01-016', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신부 아버지</span>
+        <span class="account-name">이동신</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">기업은행</span>
+          <span class="account-num">172-034388-03-015</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('172-034388-03-015', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="account-card">
+      <div class="account-card-header">
+        <span class="account-role">신부 어머니</span>
+        <span class="account-name">고민정</span>
+      </div>
+      <div class="account-number-row">
+        <div>
+          <span class="account-bank">기업은행</span>
+          <span class="account-num">658-023474-01-015</span>
+        </div>
+        <button class="account-copy-btn" onclick="copyAccount('658-023474-01-015', this)" aria-label="복사">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Popup -->
+  <div class="account-popup-overlay" id="accountPopupOverlay" onclick="closeAccountPopup()">
+    <div class="account-popup" onclick="event.stopPropagation()">
+      <div class="account-popup-header">
+        <span class="account-popup-title" id="accountPopupTitle"></span>
+        <button class="account-popup-close" onclick="closeAccountPopup()">✕</button>
+      </div>
+      <div class="account-popup-body" id="accountPopupBody"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">

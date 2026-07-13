@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, attendance, guestCount, phone, message } = req.body;
+  const { name, attendance, guestCount, phone, phone4 } = req.body;
 
   if (!name || !attendance) {
     return res.status(400).json({ message: '이름과 참석 여부는 필수입니다.' });
@@ -36,8 +36,8 @@ export default async function handler(req, res) {
       연락처: {
         phone_number: phone || null,
       },
-      '축하 메시지': {
-        rich_text: message ? [{ text: { content: message } }] : [],
+      '휴대폰 뒷자리': {
+        rich_text: phone4 ? [{ text: { content: phone4 } }] : [],
       },
     },
   };
