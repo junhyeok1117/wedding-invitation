@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, attendance, guestCount, phone, phone4 } = req.body;
+  const { name, attendance, guestCount, companions, childSeatCount, phone, requests } = req.body;
 
   if (!name || !attendance) {
     return res.status(400).json({ message: '이름과 참석 여부는 필수입니다.' });
@@ -33,11 +33,17 @@ export default async function handler(req, res) {
       인원수: {
         number: guestCount || 1,
       },
+      동반인: {
+        rich_text: companions ? [{ text: { content: companions } }] : [],
+      },
+      '자녀좌석인원': {
+        number: childSeatCount || 0,
+      },
       연락처: {
         phone_number: phone || null,
       },
-      '휴대폰 뒷자리': {
-        rich_text: phone4 ? [{ text: { content: phone4 } }] : [],
+      요청사항: {
+        rich_text: requests ? [{ text: { content: requests } }] : [],
       },
     },
   };

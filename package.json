@@ -8,10 +8,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "vercel dev",
     "deploy": "vercel --prod"
   },
   "devDependencies": {
-    "vercel": "^55.0.0"
+    "vercel": "^58.1.0"
   }
 }

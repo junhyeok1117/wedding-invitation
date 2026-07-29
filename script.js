@@ -284,6 +284,11 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== RSVP Form =====
+function toggleGuestCustom(sel) {
+  document.getElementById('guestCountCustom').classList.toggle('hidden', sel.value !== '5+');
+}
+
+
 async function submitRSVP(e) {
   e.preventDefault();
 
@@ -298,12 +303,17 @@ async function submitRSVP(e) {
     return;
   }
 
+  const guestVal = form.guestCount.value;
+  const guestCount = guestVal === '5+' ? (parseInt(form.guestCountCustom.value) || 5) : parseInt(guestVal);
+
   const payload = {
     name: form.name.value.trim(),
     attendance: attendance.value,
-    guestCount: parseInt(form.guestCount.value) || 1,
+    guestCount,
+    companions: form.companions.value.trim(),
+    childSeatCount: parseInt(form.childSeatCount.value) || 0,
     phone: form.phone.value.trim(),
-    phone4: form.phone4.value.trim(),
+    requests: form.requests.value.trim(),
   };
 
   btn.disabled = true;
@@ -603,18 +613,16 @@ function toggleRSVP() {
   arrow.classList.toggle('open', !isOpen);
 }
 
-// Show/hide guest count based on attendance
+// 불참 선택 시 참석 관련 필드 숨기기
 document.addEventListener('DOMContentLoaded', () => {
-  const radios = document.querySelectorAll('input[name="attendance"]');
-  const guestGroup = document.getElementById('guestCountGroup');
-
-  radios.forEach(r => {
+  const attendanceFields = ['guestCountGroup', 'companionsGroup', 'childGroup', 'contactGroup'];
+  document.querySelectorAll('input[name="attendance"]').forEach(r => {
     r.addEventListener('change', () => {
-      if (r.value === '불참') {
-        guestGroup.style.display = 'none';
-      } else {
-        guestGroup.style.display = '';
-      }
+      const hide = r.value === '불참';
+      attendanceFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = hide ? 'none' : '';
+      });
     });
   });
 });
